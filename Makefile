@@ -2,7 +2,7 @@ SHELL = /bin/bash
 
 VERSION = $(shell cat version.txt;)
 
-COMPILER = /usr/local/bin/closure-compiler.jar
+COMPILER = C:/cygwin/usr/local/bin/closure-compiler.jar
 
 ICH = ICanHaz.js
 ICH_MIN = ICanHaz.min.js
