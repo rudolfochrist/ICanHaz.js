@@ -12,6 +12,10 @@ test("creates function for template", function() {
 	ok(ich.test1 != null, "test1 template exists");
 });
 
+test("creates function for div templates", function () {
+    ok(ich.divtest1 != null, "divtest1 template exists");
+});
+
 test("renders non-parameterized templates", function() {
 	expect(3);
 	equal(ich.test1({}, true), "<p>This is a test of the emergency broadcast system.</p>"); // raw text
@@ -25,10 +29,25 @@ test("renders parameterized templates", function() {
 	equal(ich.test2({prey:'wabbits'}, true), "<span>Be vewwy vewwy quiet, we're hunting wabbits.</span>"); 
 });
 
+test("renders parameterized div templates", function () {
+   expect(1);
+    var data = {
+      slimshady: "Chuck Norris"  
+    };
+    equal(ich.divtest1(data, true), "<p>Hi my name is Chuck Norris</p>");
+});
+
 test("renders ad hoc templates", function() {
 	ich.addTemplate('favoriteColor', 'Red. No, Blue. Aieee!');
 	expect(1);
 	equal(ich.favoriteColor({}, true), 'Red. No, Blue. Aieee!');
+});
+
+test("renders ad hoc div templates", function () {
+    expect(1);
+    var text =  "My cat is my lawyer";
+    ich.addTemplate("lolz", text);
+    equal(ich.lolz({}, true), text);
 });
 
 // Newly added support for partials

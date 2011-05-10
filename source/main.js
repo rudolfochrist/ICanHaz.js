@@ -38,7 +38,7 @@ function ICanHaz() {
     // be trimmed. If you want whitespace around a partial, add it in the parent, 
     // not the partial. Or do it explicitly using <br/> or &nbsp;
     self.grabTemplates = function () {        
-        $('script[type="text/html"]').each(function (a, b) {
+        $('script[type="text/html"]').add("div.template").each(function (a, b) {
             var script = $((typeof a === 'number') ? b : a), // Zepto doesn't bind this
                 text = (''.trim) ? script.html().trim() : $.trim(script.html());
             

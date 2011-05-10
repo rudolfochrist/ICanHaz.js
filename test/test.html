@@ -5,8 +5,11 @@
         <link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
         <script src="jquery-1.4.4.min.js"></script>
         <script src="qunit/qunit.js"></script>
-        <script src="../ICanHaz.min.js"></script>
+        <script src="../ICanHaz.js"></script>
         <script src="./ich_test.js"></script>
+        <style type="text/css">
+            .template { display: none;}
+        </style>
         
         <!-- Testing templates -->
         <script id="test1" type="text/html">
@@ -31,6 +34,11 @@
                 $('#qunit-header').text(ich.version({version: ich.VERSION}, true));
             })
         </script>
+
+        <div class="template" id="divtest1">
+            <p>Hi my name is {{slimshady}}</p>
+        </div>
+
     </head>
     <body>
         <h1 id="qunit-header">ICanHaz Tests?</h1>
