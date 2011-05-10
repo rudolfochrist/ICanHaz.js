@@ -1,3 +1,11 @@
+About this fork:
+
+Use hidden <div>s as templates instead of <script> elements for compatibility reasons to XHTML 1.0 Strict
+
+Each <div> template must have class="template" to be recognized as such. Patials must have class="template partial". 
+
+
+===============================================================================================
                                                                                           
     _/_/_/    _/_/_/                      _/    _/                          _/            
      _/    _/          _/_/_/  _/_/_/    _/    _/    _/_/_/  _/_/_/_/            _/_/_/   
