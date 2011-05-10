@@ -98,6 +98,23 @@ test("renders partials added at runtime", function() {
 	equal(ich.welcome2(view, true), 'Welcome, Joe! You just won $1000 (which is $600 after tax)');
 });
 
+test("renders div partials added at runtime", function () {
+    ich.addPartial("kicks2", "and I roundhouse-kicked {{today}} people today. By tomorrow it will be {{tomorrow}}");
+    ich.addTemplate("kick2", "<p>Hi, I'm {{name}} {{>kicks2}}</p>");
+
+    var data = {
+        name: "Chuck Norris",
+        kicks2: {
+            today: 12,
+            tomorrow: function() {
+                return this.today * 42;
+            }
+        }  
+    };
+
+    equal(ich.kick2(data, true), "<p>Hi, I'm Chuck Norris and I roundhouse-kicked 12 people today. By tomorrow it will be 504</p>");
+});
+
 test("showAll shouldn't let you edit actual templates", function () {
     var welcome = ich.templates.welcome;
     
