@@ -66,6 +66,21 @@ test("renders partials from &lt;script&gt; tags with class=\"partial\"", functio
 	equal(ich.welcome(view, true), "<p>Welcome, Joe! You just won $1000 (which is $600 after tax)</p>");
 });
 
+test("renders partials from div templates with class='partial'", function () {
+   expect(1);
+   var data = {
+        name: "Chuck Norris",
+        kicks: {
+            today: 12,
+            tomorrow: function() {
+                return this.today * 42;
+            }   
+        }
+   };
+
+   equal(ich.kick(data, true), "<p>Hi, I'm Chuck Norris and I roundhouse-kicked 12 people today. By tomorrow it will be 504</p>")
+});
+
 test("renders partials added at runtime", function() {
 	// partials example from the Mustache README
 	ich.addPartial('winnings2', "You just won ${{value}} (which is ${{taxed_value}} after tax)");
@@ -116,5 +131,3 @@ test("refresh should empty then grab new", function () {
     equal(ich.mother({something: 'hampster'}, true), "your mother was a hampster...", "should have new template");
     equal(ich.hasOwnProperty('flint'), false, "flint template should be gone");
 });
-
-

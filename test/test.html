@@ -39,6 +39,14 @@
             <p>Hi my name is {{slimshady}}</p>
         </div>
 
+        <div class="template" id="kick">
+            <p>Hi, I'm {{name}} {{>kicks}}</p>
+        </div>
+
+        <div class="template partial" id="kicks">
+            and I roundhouse-kicked {{today}} people today. By tomorrow it will be {{tomorrow}}
+        </div>
+
     </head>
     <body>
         <h1 id="qunit-header">ICanHaz Tests?</h1>

@@ -41,6 +41,8 @@ function ICanHaz() {
         $('script[type="text/html"]').add("div.template").each(function (a, b) {
             var script = $((typeof a === 'number') ? b : a), // Zepto doesn't bind this
                 text = (''.trim) ? script.html().trim() : $.trim(script.html());
+
+            text = text.replace(/&gt;/, ">"); // musatche partials {{> partial}} get escaped when in div
             
             self[script.hasClass('partial') ? 'addPartial' : 'addTemplate'](script.attr('id'), text);
             script.remove();
