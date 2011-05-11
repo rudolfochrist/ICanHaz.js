@@ -5,6 +5,20 @@ function isEmptyObject( obj ) {
     return true;
 }
 
+/*
+ This tests fix an Firefox Issus as pointed out here https://github.com/janl/mustache.js/issues/85
+ Firefox escapes URLs, but this kann break the mustache template.
+*/
+
+module("ICanHaz-Firefox");
+QUnit.reset();
+
+test("replaces the url escape characters with curly braces", function () {
+    var expected="<img src=\"http://google.com/\">";
+    var data = { url: "http://google.com/" };
+    equal(ich.ffurl(data, true), expected);
+});
+
 module("ICanHaz");
 
 test("creates function for template", function() {
@@ -148,3 +162,4 @@ test("refresh should empty then grab new", function () {
     equal(ich.mother({something: 'hampster'}, true), "your mother was a hampster...", "should have new template");
     equal(ich.hasOwnProperty('flint'), false, "flint template should be gone");
 });
+

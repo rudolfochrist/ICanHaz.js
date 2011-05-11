@@ -43,7 +43,8 @@ function ICanHaz() {
                 text = (''.trim) ? script.html().trim() : $.trim(script.html());
 
             text = text.replace(/&gt;/, ">"); // musatche partials {{> partial}} get escaped when in div
-            
+            text = self._firefoxUrlCleanup(text);
+
             self[script.hasClass('partial') ? 'addPartial' : 'addTemplate'](script.attr('id'), text);
             script.remove();
         });
@@ -61,6 +62,15 @@ function ICanHaz() {
     self.refresh = function () {
         self.clearAll();
         self.grabTemplates();
+    };
+
+    /*
+        Firefox escapes URL (e.g. src attribute of the img tag). This can break the template 
+        (e.g. <img src="{{ulr}}">). So the template must be unescaped.
+        Refer: https://github.com/janl/mustache.js/issues/85
+    */
+    self._firefoxUrlCleanup = function (text) {
+        return text.replace(/%7B%7B/, "{{").replace(/%7D%7D/, "}}");
     };
 }
 
