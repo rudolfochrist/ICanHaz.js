@@ -70,7 +70,7 @@ function ICanHaz() {
         Refer: https://github.com/janl/mustache.js/issues/85
     */
     self._firefoxUrlCleanup = function (text) {
-        return text.replace(/%7B%7B/, "{{").replace(/%7D%7D/, "}}");
+        return text.replace(/%7B%7B/g, "{{").replace(/%7D%7D/g, "}}");
     };
 }
 
